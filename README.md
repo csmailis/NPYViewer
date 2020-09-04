@@ -1,5 +1,5 @@
 # NPYViewer
-A simple utility for viewing the contents of .npy files that contain 2D NumPy Arrays or Lists.
+A GUI tool for viewing the contents of .npy files that contain 2D NumPy Arrays or Lists.
 
 Installation:
 pip3 install -r requirements.txt
