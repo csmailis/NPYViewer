@@ -45,8 +45,10 @@ class MainApp(QMainWindow):
 
     def saveAs(self):
         home = str(Path.home())
+        #path = QFileDialog.getSaveFileName(
+         #   self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv)')[0]
         path = QFileDialog.getSaveFileName(
-            self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv)')[0]
+            self, 'Save File', home, 'CSV(*.csv)')[0]
         if  path !="" and ".csv" in path:
             with open((path.replace(".csv","")+".csv"), 'w') as stream:
                 writer = csv.writer(stream)
