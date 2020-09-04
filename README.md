@@ -2,7 +2,8 @@
 A GUI tool for viewing the contents of .npy files that contain 2D NumPy Arrays or Lists.
 
 Installation:
-pip3 install -r requirements.txt
+* Original development in Ubuntu 20.04
+* pip3 install -r requirements.txt
 
 Execution:
 python3 NPYViewer.py
