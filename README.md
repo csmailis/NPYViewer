@@ -6,7 +6,7 @@ Installation:
 * pip3 install -r requirements.txt
 
 Execution:
-python3 NPYViewer.py
+* python3 NPYViewer.py
 
 Features:
 * Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
