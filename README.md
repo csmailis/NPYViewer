@@ -9,5 +9,5 @@ python3 NPYViewer.py
 
 Features:
 * Open and view .npy files that contain 2D numpy arrays or lists
-* Convert .npy files to csv
+* Save the contents of .npy files as .csv
 * GUI developed with PyQT5
