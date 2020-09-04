@@ -1,5 +1,5 @@
 # NPYViewer
-A simple utility for viewing the contents of .npy files containing 2D numpy arrays as a spreadsheet.
+A simple utility for viewing the contents of .npy files, containing 2D NumPy arrays as a spreadsheet.
 
 Installation:
 pip3 install -r requirements.txt
