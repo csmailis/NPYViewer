@@ -20,3 +20,4 @@ TODO:
 * Data search and filtering
 * Modify content datatypes
 * Visualize images
+* View data as 3D Plot
