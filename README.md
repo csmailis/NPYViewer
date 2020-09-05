@@ -18,3 +18,4 @@ TODO:
 * Copy/Paste Rows & Columns
 * Save as .npy file
 * Data search and filtering
+* Modify content datatypes
