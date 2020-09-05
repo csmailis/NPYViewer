@@ -1,5 +1,5 @@
 # NPYViewer
-A simple GUI tool for viewing .npy files that contain 2D NumPy Arrays or Lists.
+A simple GUI tool for viewing .npy files that contain 2D NumPy Arrays or Lists and converting them to .csv.
 
 Installation:
 * Original development in Ubuntu 20.04
