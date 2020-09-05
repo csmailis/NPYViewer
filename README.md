@@ -19,3 +19,5 @@ TODO:
 * Save as .npy file
 * Data search and filtering
 * Modify content datatypes
+* Vizualize images
+* 3D Vizualization
