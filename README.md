@@ -17,3 +17,4 @@ TODO:
 * Add/Delete Rows & Columns
 * Copy/Paste Rows & Columns
 * Save as .npy file
+* Data search and filtering
