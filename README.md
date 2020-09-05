@@ -21,3 +21,4 @@ TODO:
 * Modify content datatypes
 * Visualize images
 * View data as 3D Plot
+* Handle data with more than 2 dimensions
