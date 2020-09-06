@@ -1,3 +1,8 @@
+![screenshot](screenshot.png)
+
+
+
+
 # NPYViewer
 A simple GUI tool for viewing .npy files that contain 2D NumPy Arrays or Lists and converting them to .csv.
 
