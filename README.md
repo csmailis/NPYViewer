@@ -25,5 +25,5 @@ TODO:
 * Data search and filtering
 * Modify content datatypes
 * Visualize images
-* View data as 3D Plot
+* View data as 2D/3D Plot
 * Handle data with more than 2 dimensions
