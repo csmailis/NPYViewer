@@ -16,6 +16,7 @@ Execution:
 Current Features:
 * Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
 * Save the contents of .npy files as .csv
+* COnvert .csv files to .npy format
 * GUI developed using PyQT5
 
 TODO:
