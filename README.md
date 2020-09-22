@@ -22,6 +22,7 @@ TODO:
 * Add/Delete Rows & Columns
 * Copy/Paste Rows & Columns
 * Save as .npy file
+* Save as .mat file
 * Data search and filtering
 * Modify content datatypes
 * Visualize images
