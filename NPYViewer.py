@@ -28,7 +28,10 @@ class NPYfile():
         self.data = data
         self.filename = filename
     def __str__(self):
-         return "Filename = "+str(self.filename )  +" \nDtype = "+str(self.data.dtype)+"\nShape = "+str(self.data.shape)
+        if hasattr(self.data, 'dtype'):
+            return "Filename = "+str(self.filename )  +" \nDtype = "+str(self.data.dtype)+"\nShape = "+str(self.data.shape)
+        else:
+            return "Filename = " + str(self.filename) + " \nDtype = "  + "\nShape = " + str(self.data.shape)
 
 class MainApp(QMainWindow):
 
@@ -45,10 +48,10 @@ class MainApp(QMainWindow):
 
     def saveAs(self):
         home = str(Path.home())
-        #path = QFileDialog.getSaveFileName(
-         #   self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv)')[0]
         path = QFileDialog.getSaveFileName(
-            self, 'Save File', home, 'CSV(*.csv)')[0]
+            self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv)')[0]
+        #path = QFileDialog.getSaveFileName(
+        #    self, 'Save File', home, 'CSV(*.csv)')[0]
         if  path !="" and ".csv" in path:
             with open((path.replace(".csv","")+".csv"), 'w') as stream:
                 writer = csv.writer(stream)
@@ -83,10 +86,15 @@ class MainApp(QMainWindow):
 
     def openNPY(self):
         home = str(Path.home())
-        filename =  QFileDialog.getOpenFileName(self, 'Open .NPY file', home,".NPY files (*.npy)")[0]
+        filename =  QFileDialog.getOpenFileName(self, 'Open .NPY file', home,".NPY files (*.npy);;.CSV files (*.csv)")[0]
+        data=[]
+        datafr=[]
         if filename != "":
-            data=np.load(filename,allow_pickle=True)
-            datafr = pd.DataFrame.from_records(data.tolist())
+            if filename != ".npy" in filename:
+                data=np.load(filename,allow_pickle=True)
+                datafr = pd.DataFrame.from_records(data.tolist())
+            else:
+                data = np.array(pd.read_csv(filename).values.tolist())
 
             npyfile=NPYfile(data,filename)
             print(npyfile)
@@ -96,8 +104,14 @@ class MainApp(QMainWindow):
 
             rows= npyfile.data.shape[0]
             #print(npyfile.data.shape[0][0])
-            self.tableWidget.setRowCount(datafr.shape[0])
-            self.tableWidget.setColumnCount(datafr.shape[1])
+
+            if filename != ".npy" in filename:
+                self.tableWidget.setRowCount(data.shape[0])
+                self.tableWidget.setColumnCount(data.shape[1])
+            else:
+                self.tableWidget.setRowCount(data.shape[0])
+                self.tableWidget.setColumnCount(data.shape[1])
+                print (npyfile.data)
             for i, value1 in enumerate(npyfile.data):  # loop over items in first column
                 print (value1)
                 for j, value in enumerate(value1):
