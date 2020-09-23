@@ -25,6 +25,6 @@ TODO:
 * Save as .mat file
 * Data search and filtering
 * Modify content datatypes
-* Visualize images
+* Visualize data as pixelmaps
 * View data as 2D/3D Plot
 * Handle data with more than 2 dimensions
