@@ -8,6 +8,9 @@ from numpy import asarray
 from numpy import savetxt
 import pandas as pd
 import csv
+from matplotlib import pyplot as plt
+
+
 
 def isint(s):
     try:
@@ -41,6 +44,8 @@ class MainApp(QMainWindow):
         self.top = 0
         self.width = 800
         self.height = 640
+        np.save('/home/user/tst.npy', np.array([255.0,50.0,10.0,5.0]))
+        self.npyfile=None
         self.initUI()
 
 
@@ -72,16 +77,12 @@ class MainApp(QMainWindow):
                 for column in range(self.tableWidget.columnCount()):
                     item = self.tableWidget.item(row, column)
                     if item is not None:
-
-                        if isfloat(item.text()) and not isint(item.text()):
-                            rowdata.append(float(item.text()))
-                        if isfloat(item.text()) and isint(item.text()):
+                        if item.text().isnumeric():
                             rowdata.append(int(item.text()))
-                        if not isfloat(item.text()) and not isint(item.text()):
-                            rowdata.append(item.text())
-                    else:
-                        rowdata.append('')
-                OutMatrix.append(rowdata)
+      
+                if rowdata !=[]:
+                    OutMatrix.append(rowdata)
+            OutMatrix=np.array(OutMatrix)
             np.save(path, np.array(OutMatrix))
 
     def openNPY(self):
@@ -90,7 +91,7 @@ class MainApp(QMainWindow):
         data=[]
         datafr=[]
         if filename != "":
-            if filename != ".npy" in filename:
+            if ".npy" in filename:
                 data=np.load(filename,allow_pickle=True)
                 datafr = pd.DataFrame.from_records(data.tolist())
             else:
@@ -98,7 +99,7 @@ class MainApp(QMainWindow):
 
             npyfile=NPYfile(data,filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer:  '+npyfile.filename)
+            self.setWindowTitle('NPYViewer v.1.1:  '+npyfile.filename)
             self.infoLb.setText("NPY Properties:\n"+str(npyfile))
             self.tableWidget.clear()
 
@@ -118,6 +119,7 @@ class MainApp(QMainWindow):
                     self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
                     #print(i,j)
                     #print(value)
+            self.npyfile=npyfile
 
             #for n, value in enumerate(df['T']):  # loop over items in second column
             #    self.data.setItem(n, 1, QTableWidgetItem(str(value)))
@@ -125,6 +127,7 @@ class MainApp(QMainWindow):
 
 
     def createMenu(self):
+
         exitAct = QAction(QIcon('exit.png'), '&Exit', self)
         exitAct.setShortcut('Ctrl+Q')
         exitAct.setStatusTip('Exit application')
@@ -142,12 +145,83 @@ class MainApp(QMainWindow):
         saveAct.triggered.connect(self.saveAs)
         self.statusBar()
 
+        grayscalevVewAct = QAction(QIcon(None), '&View as Grayscale', self)
+        grayscalevVewAct.setShortcut('Ctrl+V')
+        grayscalevVewAct.setStatusTip('View as Grayscale')
+        grayscalevVewAct.triggered.connect(self.grayscaleView)
+        self.statusBar()
+        
+        View3dAct = QAction(QIcon(None), 'View &3D Point Cloud', self)
+        View3dAct.setShortcut('Ctrl+3')
+        View3dAct.setStatusTip('View 3D Point Cloud')
+        View3dAct.triggered.connect(self.View3dPoints)
+        self.statusBar()
+        
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
+        fileMenu = menubar.addMenu('&Functionalities')
         fileMenu.addAction(openAct)
         fileMenu.addAction(saveAct)
+        fileMenu.addAction(grayscalevVewAct)
+        fileMenu.addAction(View3dAct)
         fileMenu.addAction(exitAct)
 
+    def grayscaleView(self):
+        OutMatrix=[]
+        for row in range(self.tableWidget.rowCount()):
+            rowdata = []
+            for column in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, column)
+                #print(item.text())
+                if item is not None:
+                        rowdata.append(np.int32(item.text()))
+  
+            if len(rowdata)>0 and rowdata !=None:
+                OutMatrix.append(rowdata)
+            
+        
+        OutMatrix=np.array(OutMatrix)
+        print(OutMatrix)
+        plt.imshow(OutMatrix, cmap='gray')
+        plt.show()
+        return
+    
+
+    
+    def View3dPoints(self):
+        OutMatrix=[]
+        for row in range(self.tableWidget.rowCount()):
+            rowdata = []
+            for column in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, column)
+
+                if item is not None:
+                    if item.text():
+                        print(item.text())
+                        rowdata.append(np.float32(item.text()))
+            if len(rowdata)>0 and rowdata !=None:
+                OutMatrix.append(rowdata)
+        print(OutMatrix)
+        OutMatrix=np.array(OutMatrix)
+
+
+
+    
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        
+        xs = OutMatrix[:,0]
+
+        ys = OutMatrix[:,1]
+        zs = OutMatrix[:,2]
+        ax.scatter(xs, ys, zs, c='r', marker='o')
+        
+        ax.set_xlabel('X Label')
+        ax.set_ylabel('Y Label')
+        ax.set_zlabel('Z Label')
+
+        plt.show()
+        return
+    
     def initUI(self):
         self.createMenu()
 
