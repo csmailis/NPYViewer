@@ -29,7 +29,7 @@
 
 
 ### TODO:
-* Add/Delete Rows & Columns
+* Add/Remove Rows & Columns
 * Copy/Paste Rows & Columns
 * Save as .mat file
 * Data search and filtering
