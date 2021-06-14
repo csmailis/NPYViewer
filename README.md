@@ -1,30 +1,37 @@
+
+# NPYViewer Version 1.1
+### A simple GUI tool for viewing .npy files that contain 2D NumPy Arrays or Lists and converting them to .csv.
+
+#### Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
 ![screenshot](ScreenShot1.png)
+#### Plot 2D numpy arrays as Grayscale Images
 ![screenshot](ScreenShot2.png)
 
 
 
-# NPYViewer
-A simple GUI tool for viewing .npy files that contain 2D NumPy Arrays or Lists and converting them to .csv.
 
-Installation:
+### Installation:
 * Original development in Ubuntu 20.04
 * pip3 install -r requirements.txt
 
-Execution:
+
+### Execution:
 * python3 NPYViewer.py
 
-Current Features:
+
+### Current Features:
 * Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
 * Save the contents of .npy files as .csv
 * Convert .csv files to .npy format
+* Plot 2D numpy arrays as Grayscale Images
+* Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
 * GUI developed using PyQT5
 
-TODO:
+
+### TODO:
 * Add/Delete Rows & Columns
 * Copy/Paste Rows & Columns
 * Save as .mat file
 * Data search and filtering
 * Modify content datatypes
-* Visualize data as pixelmaps
-* View data as 2D/3D Plot
 * Handle data with more than 2 dimensions
