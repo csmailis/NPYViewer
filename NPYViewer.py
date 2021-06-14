@@ -44,7 +44,7 @@ class MainApp(QMainWindow):
         self.top = 0
         self.width = 800
         self.height = 640
-        np.save('/home/user/tst.npy', np.array([255.0,50.0,10.0,5.0]))
+        #np.save('/home/user/tst.npy', np.array([255.0,50.0,10.0,5.0]))
         self.npyfile=None
         self.initUI()
 
@@ -196,7 +196,6 @@ class MainApp(QMainWindow):
 
                 if item is not None:
                     if item.text():
-                        print(item.text())
                         rowdata.append(np.float32(item.text()))
             if len(rowdata)>0 and rowdata !=None:
                 OutMatrix.append(rowdata)
@@ -234,7 +233,7 @@ class MainApp(QMainWindow):
         #self.tableWidget.doubleClicked.connect(self.on_click)
 
         self.setGeometry(0, 0, 800, 600)
-        self.setWindowTitle('NPYViewer')
+        self.setWindowTitle('NPYViewer v.1.1')
 
         self.widget = QWidget(self)
         layout = QGridLayout()
