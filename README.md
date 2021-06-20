@@ -7,8 +7,8 @@
 #### Plot 2D numpy arrays as Grayscale Images
 ![screenshot](ScreenShot2.png)
 #### Vizualize HeightMaps stored in 2D numpy arrays
-![screenshot](ScreenShot3.png)
-![screenshot](ScreenShot4.png)
+![screenshot](ScreenShot3.png) ![screenshot](ScreenShot4.png)
+
 
 
 ### Installation:
