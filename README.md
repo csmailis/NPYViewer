@@ -3,11 +3,12 @@
 ###  A simple GUI tool that provides multiple ways to view the contents of .npy files containing 2D NumPy Arrays 
 
 #### Plot 3-column 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
-![screenshot](ScreenShot1.png)
+![screenshot](screenshots/ScreenShot1.png)
 #### Plot 2D numpy arrays as Grayscale Images
-![screenshot](ScreenShot2.png)
+![screenshot](screenshots/ScreenShot2.png)
 #### Vizualize HeightMaps stored in 2D numpy arrays
-![screenshot](ScreenShot3.png) ![screenshot](ScreenShot4.png)
+![screenshot](screenshots/ScreenShot3.png) 
+![screenshot](screenshots/ScreenShot4.png)
 
 
 
