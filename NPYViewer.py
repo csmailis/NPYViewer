@@ -9,7 +9,7 @@ from numpy import savetxt
 import pandas as pd
 import csv
 from matplotlib import pyplot as plt
-
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def isint(s):
@@ -169,12 +169,19 @@ class MainApp(QMainWindow):
         View3dAct.triggered.connect(self.View3dPoints)
         self.statusBar()
         
+        View3dImgAct = QAction(QIcon(None), 'View Image &HeightMap', self)
+        View3dImgAct.setShortcut('Ctrl+H')
+        View3dImgAct.setStatusTip('View Image HeightMap')
+        View3dImgAct.triggered.connect(self.ViewImageHeightMap)
+        self.statusBar()
+        
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&Functionalities')
         fileMenu.addAction(openAct)
         fileMenu.addAction(saveAct)
         fileMenu.addAction(grayscalevVewAct)
         fileMenu.addAction(View3dAct)
+        fileMenu.addAction(View3dImgAct)
         fileMenu.addAction(exitAct)
 
     def grayscaleView(self):
@@ -185,7 +192,7 @@ class MainApp(QMainWindow):
                 item = self.tableWidget.item(row, column)
                 #print(item.text())
                 if item is not None:
-                        rowdata.append(np.int32(item.text()))
+                        rowdata.append(np.float32(item.text()))
   
             if len(rowdata)>0 and rowdata !=None:
                 OutMatrix.append(rowdata)
@@ -197,6 +204,41 @@ class MainApp(QMainWindow):
         plt.show()
         return
     
+    def ViewImageHeightMap(self):
+        OutMatrix=[]
+        for row in range(self.tableWidget.rowCount()):
+            rowdata = []
+            for column in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, column)
+
+                if item is not None:
+                    if item.text():
+                        rowdata.append(np.float32(item.text()))
+            if len(rowdata)>0 and rowdata !=None:
+                OutMatrix.append(rowdata)
+        #print(OutMatrix)
+        HeightMap=[]
+        for x,row in enumerate(OutMatrix):
+            for y,val in enumerate(row):
+                HeightMap.append([x,y,val])
+        OutMatrix=np.array(HeightMap)
+    
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        
+        xs = OutMatrix[:,0]
+
+        ys = OutMatrix[:,1]
+        zs = OutMatrix[:,2]
+        ax.plot_trisurf(xs, ys, zs,
+                cmap='viridis', edgecolor='none');
+
+        ax.set_xlabel('X Axis')
+        ax.set_ylabel('Y Axis')
+        ax.set_zlabel('Z Axis')
+
+        plt.show()
+        return
 
     
     def View3dPoints(self):
@@ -213,9 +255,6 @@ class MainApp(QMainWindow):
                 OutMatrix.append(rowdata)
         #print(OutMatrix)
         OutMatrix=np.array(OutMatrix)
-
-
-
     
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
