@@ -6,7 +6,7 @@
 ![screenshot](screenshots/ScreenShot1.png)
 #### Plot 2D numpy arrays as Grayscale Images
 ![screenshot](screenshots/ScreenShot2.png)
-#### Vizualize Heightmaps stored in 2D numpy arrays
+#### Vizualize Heightmaps stored as 2D numpy arrays
 ![screenshot](screenshots/ScreenShot3.png) 
 ![screenshot](screenshots/ScreenShot4.png)
 
@@ -27,7 +27,7 @@
 * Convert .csv files to .npy format
 * Plot 2D numpy arrays as Grayscale Images
 * Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
-* Vizualize Heightmaps stored in 2D numpy arrays
+* Vizualize Heightmaps stored as 2D numpy arrays
 * GUI developed using PyQT5
 
 
