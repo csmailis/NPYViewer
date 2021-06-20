@@ -1,13 +1,14 @@
 
-# NPYViewer 1.1
+# NPYViewer 1.2
 ###  A simple GUI tool that provides multiple ways to view the contents of .npy files containing 2D NumPy Arrays 
 
 #### Plot 3-column 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
 ![screenshot](ScreenShot1.png)
 #### Plot 2D numpy arrays as Grayscale Images
 ![screenshot](ScreenShot2.png)
-
-
+#### Vizualize HeightMaps from 2D numpy arrays
+![screenshot](ScreenShot3.png)
+![screenshot](ScreenShot4.png)
 
 
 ### Installation:
@@ -25,6 +26,7 @@
 * Convert .csv files to .npy format
 * Plot 2D numpy arrays as Grayscale Images
 * Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
+* Vizualize HeightMaps from 2D numpy arrays
 * GUI developed using PyQT5
 
 
