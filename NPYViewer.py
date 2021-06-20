@@ -93,7 +93,8 @@ class MainApp(QMainWindow):
         if filename != "":
             if ".npy" in filename:
                 data=np.load(filename,allow_pickle=True)
-                datafr = pd.DataFrame.from_records(data.tolist())
+               # print (data)
+                #datafr = pd.DataFrame.from_records(data.tolist())
             else:
                 data = np.array(pd.read_csv(filename).values.tolist())
 
@@ -108,17 +109,28 @@ class MainApp(QMainWindow):
 
             if filename != ".npy" in filename:
                 self.tableWidget.setRowCount(data.shape[0])
-                self.tableWidget.setColumnCount(data.shape[1])
+                if data.ndim>1:
+                    self.tableWidget.setColumnCount(data.shape[1])
+                else:
+                    self.tableWidget.setColumnCount(1)
+
             else:
-                self.tableWidget.setRowCount(data.shape[0])
-                self.tableWidget.setColumnCount(data.shape[1])
+                if data.ndim>1:
+                    self.tableWidget.setColumnCount(data.shape[1])
+                else:
+                    self.tableWidget.setColumnCount(1)
                 print (npyfile.data)
-            for i, value1 in enumerate(npyfile.data):  # loop over items in first column
-                print (value1)
-                for j, value in enumerate(value1):
-                    self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
-                    #print(i,j)
-                    #print(value)
+            if data.ndim>1:
+                for i, value1 in enumerate(npyfile.data):  # loop over items in first column
+                    #print (value1)
+                    for j, value in enumerate(value1):
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
+                        #print(i,j)
+                        #print(value)
+            else:
+                for i, value1 in enumerate(npyfile.data):  # loop over items in first column
+                    self.tableWidget.setItem(i, 0, QTableWidgetItem(str(value1)))
+
             self.npyfile=npyfile
 
             #for n, value in enumerate(df['T']):  # loop over items in second column
@@ -199,7 +211,7 @@ class MainApp(QMainWindow):
                         rowdata.append(np.float32(item.text()))
             if len(rowdata)>0 and rowdata !=None:
                 OutMatrix.append(rowdata)
-        print(OutMatrix)
+        #print(OutMatrix)
         OutMatrix=np.array(OutMatrix)
 
 
@@ -214,9 +226,9 @@ class MainApp(QMainWindow):
         zs = OutMatrix[:,2]
         ax.scatter(xs, ys, zs, c='r', marker='o')
         
-        ax.set_xlabel('X Label')
-        ax.set_ylabel('Y Label')
-        ax.set_zlabel('Z Label')
+        ax.set_xlabel('X Axis')
+        ax.set_ylabel('Y Axis')
+        ax.set_zlabel('Z Axis')
 
         plt.show()
         return
