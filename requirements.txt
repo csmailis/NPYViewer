@@ -1,0 +1,4 @@
+python-qt
+numpy
+pandas
+matplotlib
