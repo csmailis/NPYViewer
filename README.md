@@ -38,4 +38,4 @@
 * Data search and filtering
 * Modify content datatypes
 * Handle data with more than 2 dimensions
-* Vizualize adjacency matrices as graphs
+* Visualize adjacency matrices as graphs
