@@ -13,7 +13,7 @@
 
 
 ### Installation:
-* Original development in Ubuntu 20.04
+* Original development in Ubuntu 20.04 and Python 3.8.8
 * pip3 install -r requirements.txt
 
 
