@@ -23,7 +23,7 @@
 
 ### Current Features:
 * Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
-* Save the contents of .npy files as .csv
+* Convert .npy files to .csv format
 * Convert .csv files to .npy format
 * Plot 2D numpy arrays as Grayscale Images
 * Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
