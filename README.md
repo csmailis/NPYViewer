@@ -14,6 +14,7 @@
 
 ### Installation:
 * Original development in Ubuntu 20.04 and Python 3.8.8
+* Tested on Windows 10
 * pip3 install -r requirements.txt
 
 
