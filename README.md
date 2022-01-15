@@ -14,7 +14,7 @@
 
 ### Installation:
 * Original development in Ubuntu 20.04 and Python 3.8.8
-* Tested on Windows 10
+* Also tested on Windows 10
 * pip3 install -r requirements.txt
 
 
@@ -37,6 +37,7 @@
 * Copy/Paste Rows & Columns
 * Save as .mat file
 * Data search and filtering
-* Modify content datatypes
+* Support for loading NPY files with custom datatypes
+* Modify content datatypes 
 * Handle data with more than 2 dimensions
 * Visualize adjacency matrices as graphs
