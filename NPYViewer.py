@@ -1,3 +1,4 @@
+import os.path
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
@@ -87,6 +88,8 @@ class MainApp(QMainWindow):
 
     def openNPY(self):
         home = str(Path.home())
+        if self.npyfile is not None:
+            home = os.path.dirname(self.npyfile.filename)
         filename = QFileDialog.getOpenFileName(self, 'Open .NPY file', home, ".NPY files (*.npy);;.CSV files (*.csv)")[0]
         if filename != "":
             if ".npy" in filename:
