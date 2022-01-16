@@ -1,3 +1,4 @@
+import os.path
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
@@ -87,56 +88,45 @@ class MainApp(QMainWindow):
 
     def openNPY(self):
         home = str(Path.home())
-        filename =  QFileDialog.getOpenFileName(self, 'Open .NPY file', home,".NPY files (*.npy);;.CSV files (*.csv)")[0]
-        data=[]
-        datafr=[]
+        if self.npyfile is not None:
+            home = os.path.dirname(self.npyfile.filename)
+        filename = QFileDialog.getOpenFileName(self, 'Open .NPY file', home, ".NPY files (*.npy);;.CSV files (*.csv)")[0]
         if filename != "":
             if ".npy" in filename:
-                data=np.load(filename,allow_pickle=True)
-               # print (data)
-                #datafr = pd.DataFrame.from_records(data.tolist())
+                data = np.load(filename, allow_pickle=True)
             else:
                 data = np.array(pd.read_csv(filename).values.tolist())
 
-            npyfile=NPYfile(data,filename)
+            npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.2:  '+npyfile.filename)
-            self.infoLb.setText("NPY Properties:\n"+str(npyfile))
+            self.setWindowTitle('NPYViewer v.1.2: ' + npyfile.filename)
+            self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
-            rows= npyfile.data.shape[0]
-            #print(npyfile.data.shape[0][0])
-
-            if filename != ".npy" in filename:
-                self.tableWidget.setRowCount(data.shape[0])
-                if data.ndim>1:
-                    self.tableWidget.setColumnCount(data.shape[1])
-                else:
-                    self.tableWidget.setColumnCount(1)
-
+            # initialise table
+            self.tableWidget.setRowCount(data.shape[0])
+            dtype_dim = len(npyfile.data.dtype)  # 0, if plain dtype, 1 or bigger if compound dtype
+            if data.ndim > 1:
+                self.tableWidget.setColumnCount(data.shape[1])
+            elif dtype_dim > 0:
+                self.tableWidget.setColumnCount(dtype_dim)
             else:
-                if data.ndim>1:
-                    self.tableWidget.setColumnCount(data.shape[1])
-                else:
-                    self.tableWidget.setColumnCount(1)
-                print (npyfile.data)
-            if data.ndim>1:
+                self.tableWidget.setColumnCount(1)
+
+            # fill data
+            if data.ndim > 1:
                 for i, value1 in enumerate(npyfile.data):  # loop over items in first column
-                    #print (value1)
                     for j, value in enumerate(value1):
                         self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
-                        #print(i,j)
-                        #print(value)
+            elif dtype_dim > 0:
+                for i, value1 in enumerate(npyfile.data):
+                    for j, col_name in enumerate(npyfile.data.dtype.names):
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(value1[col_name])))
             else:
                 for i, value1 in enumerate(npyfile.data):  # loop over items in first column
                     self.tableWidget.setItem(i, 0, QTableWidgetItem(str(value1)))
 
-            self.npyfile=npyfile
-
-            #for n, value in enumerate(df['T']):  # loop over items in second column
-            #    self.data.setItem(n, 1, QTableWidgetItem(str(value)))
-
-
+            self.npyfile = npyfile
 
     def createMenu(self):
 
