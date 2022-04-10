@@ -45,3 +45,4 @@
 
 ### Changes since last version:
 * Open window remembers the path of the last opened file between consecutive executions
+* Partial support for arrays with custom dtypes
