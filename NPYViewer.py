@@ -13,6 +13,7 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import os
 
+
 def isint(s):
     try:
         print(int(s))
@@ -108,7 +109,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.2: ' + npyfile.filename)
+            self.setWindowTitle('NPYViewer v.1.22: ' + npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
@@ -136,9 +137,9 @@ class MainApp(QMainWindow):
                     self.tableWidget.setItem(i, 0, QTableWidgetItem(str(value1)))
 
             self.npyfile = npyfile
-            path=os.path.dirname(filename)
-            np.save("lastpath.npy",path)
-            
+            path = os.path.dirname(filename)
+            np.save("lastpath.npy", path)
+
     def createMenu(self):
 
         exitAct = QAction(QIcon('exit.png'), '&Exit', self)
@@ -283,7 +284,7 @@ class MainApp(QMainWindow):
         # self.tableWidget.doubleClicked.connect(self.on_click)
 
         self.setGeometry(0, 0, 800, 600)
-        self.setWindowTitle('NPYViewer v.1.2')
+        self.setWindowTitle('NPYViewer v.1.22')
 
         self.widget = QWidget(self)
         layout = QGridLayout()
