@@ -37,7 +37,6 @@
 * Copy/Paste Rows & Columns
 * Save as .mat file
 * Data search and filtering
-* Support for loading NPY files with custom datatypes
 * Modify content datatypes 
 * Handle data with more than 2 dimensions
 * Visualize adjacency matrices as graphs
