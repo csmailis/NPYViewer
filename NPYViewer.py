@@ -114,7 +114,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.22: ' + npyfile.filename)
+            self.setWindowTitle('NPYViewer v.1.23: ' + npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
@@ -289,7 +289,7 @@ class MainApp(QMainWindow):
         # self.tableWidget.doubleClicked.connect(self.on_click)
 
         self.setGeometry(0, 0, 800, 600)
-        self.setWindowTitle('NPYViewer v.1.22')
+        self.setWindowTitle('NPYViewer v.1.23')
 
         self.widget = QWidget(self)
         layout = QGridLayout()
