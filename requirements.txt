@@ -2,3 +2,4 @@ PyQt5==5.12.3
 numpy
 pandas
 matplotlib
+scipy
