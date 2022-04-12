@@ -12,7 +12,7 @@ import csv
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import os
-
+from scipy.io import savemat
 
 def isint(s):
     try:
@@ -60,7 +60,7 @@ class MainApp(QMainWindow):
         if self.npyfile is not None:
             home = os.path.dirname(self.npyfile.filename)
         path = QFileDialog.getSaveFileName(
-            self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv)')[0]
+            self, 'Save File', home, 'NPY (*.npy);;CSV(*.csv);;MAT(*.mat)')[0]
         # path = QFileDialog.getSaveFileName(
         #    self, 'Save File', home, 'CSV(*.csv)')[0]
         if path != "" and ".csv" in path:
@@ -83,13 +83,18 @@ class MainApp(QMainWindow):
                 for column in range(self.tableWidget.columnCount()):
                     item = self.tableWidget.item(row, column)
                     if item is not None:
-                        if item.text().isnumeric():
-                            rowdata.append(int(item.text()))
+                        #if item.text().isnumeric():
+                        rowdata.append(float(item.text()))
 
                 if rowdata != []:
                     OutMatrix.append(rowdata)
             OutMatrix = np.array(OutMatrix)
-            np.save(path, np.array(OutMatrix))
+            if ".csv" in path:
+                np.save(path, np.array(OutMatrix))
+            if ".mat" in path:
+                mdic = {"ans": OutMatrix}
+                print(OutMatrix)
+                savemat(path, mdic)
 
     def openNPY(self):
         if os.path.exists("lastpath.npy"):
