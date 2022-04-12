@@ -205,7 +205,6 @@ class MainApp(QMainWindow):
                 OutMatrix.append(rowdata)
 
         OutMatrix = np.array(OutMatrix)
-        print(OutMatrix)
         plt.imshow(OutMatrix, cmap='gray')
         plt.show()
         return
