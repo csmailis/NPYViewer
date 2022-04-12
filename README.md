@@ -43,5 +43,6 @@
 
 
 ### Changes since last version:
+* Convert .npy files to .mat format (compatible with MATLAB and Octave)
 * Open window remembers the path of the last opened file between consecutive executions
 * Partial support for arrays with custom dtypes
