@@ -1,5 +1,5 @@
 
-# NPYViewer 1.22
+# NPYViewer 1.23
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D NumPy Arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
@@ -26,6 +26,7 @@
 * Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
 * Convert .npy files to .csv format
 * Convert .csv files to .npy format
+* Convert .npy files to .mat format (compatible with MATLAB and Octave)
 * Plot 2D numpy arrays as Grayscale Images
 * Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
 * Visualize Heightmaps stored as 2D numpy arrays
@@ -35,7 +36,6 @@
 ### TODO:
 * Add/Remove Rows & Columns
 * Copy/Paste Rows & Columns
-* Save as .mat file
 * Data search and filtering
 * Modify content datatypes 
 * Handle data with more than 2 dimensions
