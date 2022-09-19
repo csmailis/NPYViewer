@@ -1,6 +1,6 @@
 
 # NPYViewer 1.24
-###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D NumPy Arrays.
+###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D and 1D NumPy arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
 ![screenshot](screenshots/ScreenShot1.png)
