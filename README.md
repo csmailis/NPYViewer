@@ -2,14 +2,14 @@
 # NPYViewer 1.24
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D NumPy Arrays.
 
-#### Plot 3-column 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
+#### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
 ![screenshot](screenshots/ScreenShot1.png)
-#### Plot 2D numpy arrays as Grayscale Images
+#### Plot 2D numpy arrays as grayscale images
 ![screenshot](screenshots/ScreenShot2.png)
-#### Visualize Heightmaps stored as 2D numpy arrays
+#### Visualize heightmaps stored as 2D numpy arrays
 ![screenshot](screenshots/ScreenShot3.png) 
 ![screenshot](screenshots/ScreenShot4.png)
-#### Visualize Timeseries data stored as 1D numpy arrays
+#### Visualize timeseries data stored as 1D numpy arrays
 ![screenshot](screenshots/ScreenShot5.png)
 
 
@@ -24,14 +24,14 @@
 
 
 ### Current Features:
-* Open and view .npy files that contain 2D NumPy Arrays and Lists, as spreadsheets
+* Open and view .npy files that contain 2D NumPy arrays and lists, as spreadsheets
 * Convert .npy files to .csv format
 * Convert .csv files to .npy format
 * Convert .npy files to .mat format (compatible with MATLAB and Octave)
-* Plot 2D numpy arrays as Grayscale Images
-* Plot 2D numpy arrays containing 3D Coordinates as 3D Point Clouds
-* Visualize Heightmaps stored as 2D numpy arrays
-* Visualize Timeseries data stored as 1D numpy arrays
+* Plot 2D numpy arrays as grayscale images
+* Plot 2D numpy arrays containing 3D coordinates as 3D point clouds
+* Visualize heightmaps stored as 2D numpy arrays
+* Visualize timeseries data stored as 1D numpy arrays
 * GUI developed using PyQT5
 
 
