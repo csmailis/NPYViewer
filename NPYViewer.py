@@ -182,6 +182,12 @@ class MainApp(QMainWindow):
         View3dImgAct.triggered.connect(self.ViewImageHeightMap)
         self.statusBar()
 
+        ViewTimeSeriesAct= QAction(QIcon(None), 'View as &TimeSeries', self)
+        ViewTimeSeriesAct.setShortcut('Ctrl+S')
+        ViewTimeSeriesAct.setStatusTip('View as TimeSeries')
+        ViewTimeSeriesAct.triggered.connect(self.ViewTimeseries)
+        self.statusBar()
+        
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&Functionalities')
         fileMenu.addAction(openAct)
@@ -189,6 +195,7 @@ class MainApp(QMainWindow):
         fileMenu.addAction(grayscalevVewAct)
         fileMenu.addAction(View3dAct)
         fileMenu.addAction(View3dImgAct)
+        fileMenu.addAction(ViewTimeSeriesAct)
         fileMenu.addAction(exitAct)
 
     def grayscaleView(self):
@@ -275,7 +282,34 @@ class MainApp(QMainWindow):
 
         plt.show()
         return
+    
+    def ViewTimeseries(self):
+        OutMatrix = []
+        for row in range(self.tableWidget.rowCount()):
+            rowdata = []
+            for column in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, column)
 
+                if item is not None:
+                    if item.text():
+                        rowdata.append(np.float32(item.text()))
+            if len(rowdata) > 0 and rowdata != None:
+                OutMatrix.append(rowdata)
+        # print(OutMatrix)
+        #OutMatrix = np.array(OutMatrix)
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        indices=range(0,len(OutMatrix))
+        plt.plot(indices, OutMatrix, label='values', linewidth=3)
+
+        ax.set_xlabel('X Axis')
+        ax.set_ylabel('Y Axis')
+
+        plt.show()
+        return
+
+    
     def initUI(self):
         self.createMenu()
 
