@@ -303,8 +303,8 @@ class MainApp(QMainWindow):
         indices=range(0,len(OutMatrix))
         plt.plot(indices, OutMatrix, label='values', linewidth=3)
 
-        ax.set_xlabel('X Axis')
-        ax.set_ylabel('Y Axis')
+        ax.set_xlabel('Time Unit')
+        ax.set_ylabel('Values')
 
         plt.show()
         return
