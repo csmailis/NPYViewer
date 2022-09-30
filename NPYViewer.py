@@ -114,7 +114,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.23: ' + npyfile.filename)
+            self.setWindowTitle('NPYViewer v.1.24: ' + npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
