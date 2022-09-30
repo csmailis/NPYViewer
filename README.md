@@ -27,7 +27,7 @@
 * Open and view .npy files that contain 2D NumPy arrays and lists, as spreadsheets
 * Convert .npy files to .csv format
 * Convert .csv files to .npy format
-* Convert .npy files to .mat format (compatible with MATLAB and Octave)
+* Export .npy files as .mat files (compatible with MATLAB and Octave)
 * Plot 2D numpy arrays as grayscale images
 * Plot 2D numpy arrays containing 3D coordinates as 3D point clouds
 * Visualize heightmaps stored as 2D numpy arrays
