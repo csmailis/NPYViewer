@@ -114,7 +114,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.24: ' + npyfile.filename)
+            self.setWindowTitle('NPYViewer v.1.25: ' + npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
@@ -145,6 +145,48 @@ class MainApp(QMainWindow):
             path = os.path.dirname(filename)
             np.save("lastpath.npy", path)
 
+
+    def openNPY_CLI(self,filename):
+
+            if ".npy" in filename:
+                data = np.load(filename, allow_pickle=True)
+            else:
+                data = np.array(pd.read_csv(filename).values.tolist())
+
+            npyfile = NPYfile(data, filename)
+            print(npyfile)
+            self.setWindowTitle('NPYViewer v.1.25: ' + npyfile.filename)
+            self.infoLb.setText("NPY Properties:\n" + str(npyfile))
+            self.tableWidget.clear()
+
+            # initialise table
+            self.tableWidget.setRowCount(data.shape[0])
+            dtype_dim = len(npyfile.data.dtype)  # 0, if plain dtype, 1 or bigger if compound dtype
+            if data.ndim > 1:
+                self.tableWidget.setColumnCount(data.shape[1])
+            elif dtype_dim > 0:
+                self.tableWidget.setColumnCount(dtype_dim)
+            else:
+                self.tableWidget.setColumnCount(1)
+
+            # fill data
+            if data.ndim > 1:
+                for i, value1 in enumerate(npyfile.data):  # loop over items in first column
+                    for j, value in enumerate(value1):
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
+            elif dtype_dim > 0:
+                for i, value1 in enumerate(npyfile.data):
+                    for j, col_name in enumerate(npyfile.data.dtype.names):
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(value1[col_name])))
+            else:
+                for i, value1 in enumerate(npyfile.data):  # loop over items in first column
+                    self.tableWidget.setItem(i, 0, QTableWidgetItem(str(value1)))
+
+            self.npyfile = npyfile
+            path = os.path.dirname(filename)
+            np.save("lastpath.npy", path)
+
+            
     def createMenu(self):
 
         exitAct = QAction(QIcon('exit.png'), '&Exit', self)
@@ -322,7 +364,7 @@ class MainApp(QMainWindow):
         # self.tableWidget.doubleClicked.connect(self.on_click)
 
         self.setGeometry(0, 0, 800, 600)
-        self.setWindowTitle('NPYViewer v.1.23')
+        self.setWindowTitle('NPYViewer v.1.25')
 
         self.widget = QWidget(self)
         layout = QGridLayout()
@@ -341,6 +383,8 @@ class MainApp(QMainWindow):
 def main():
     app = QApplication(sys.argv)
     ex = MainApp()
+    if len(sys.argv) ==2:
+        ex.openNPY_CLI(sys.argv[1])
     sys.exit(app.exec_())
 
 
