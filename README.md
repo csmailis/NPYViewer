@@ -20,7 +20,7 @@
 
 
 ### Execution:
-* python3 NPYViewer.py or python3 NPYViewer.py sample.npy
+* python3 NPYViewer.py
 
 
 ### Current Features:
