@@ -1,5 +1,5 @@
 
-# NPYViewer 1.25
+# NPYViewer 1.26
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D and 1D NumPy arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
@@ -11,6 +11,8 @@
 ![screenshot](screenshots/ScreenShot4.png)
 #### Visualize timeseries data stored as 1D numpy arrays
 ![screenshot](screenshots/ScreenShot5.png)
+#### Print numpy arrays on terminal
+![screenshot](screenshots/ScreenShot6.png)
 
 
 ### Installation:
@@ -33,6 +35,7 @@
 * Visualize heightmaps stored as 2D numpy arrays
 * Visualize timeseries data stored as 1D numpy arrays
 * Supports loading .npy files as command line arguments (e.g., python3 NPYViewer.py sample.npy)
+* Print numpy arrays on terminal through the use of the -noGUI argument (e.g., python NPYViewer.py sample_npy_files/timeseries.npy -noGUI)
 * GUI developed using PyQT5
 
 
@@ -46,4 +49,4 @@
 
 
 ### Changes since last version:
-* Added support for loading .npy files as commandline arguments (e.g., python3 NPYViewer.py sample.npy)
+* Added support for printing .npy files as commandline arguments (e.g., python NPYViewer.py sample_npy_files/timeseries.npy -noGUI)
