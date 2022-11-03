@@ -14,6 +14,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import os
 from scipy.io import savemat
 
+
+version="1.26"
+
 def isint(s):
     try:
         print(int(s))
@@ -30,6 +33,19 @@ def isfloat(s):
         return False
 
 
+
+def openNPY_CLI_noGUI (filename):
+
+        if ".npy" in filename:
+            data = np.load(filename, allow_pickle=True)
+        else:
+            data = np.array(pd.read_csv(filename).values.tolist())
+
+        npyfile = NPYfile(data, filename)
+        print(npyfile)
+        print(data)
+
+
 class NPYfile():
     def __init__(self, data, filename):
         self.data = data
@@ -43,6 +59,8 @@ class NPYfile():
             return "Filename = " + str(self.filename) + " \nDtype = " + "\nShape = " + str(self.data.shape)
 
 
+
+            
 class MainApp(QMainWindow):
 
     def __init__(self):
@@ -114,7 +132,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.25: ' + npyfile.filename)
+            self.setWindowTitle("NPYViewer v." +version+": "+ npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
@@ -155,7 +173,7 @@ class MainApp(QMainWindow):
 
             npyfile = NPYfile(data, filename)
             print(npyfile)
-            self.setWindowTitle('NPYViewer v.1.25: ' + npyfile.filename)
+            self.setWindowTitle("NPYViewer v." +version+": " +npyfile.filename)
             self.infoLb.setText("NPY Properties:\n" + str(npyfile))
             self.tableWidget.clear()
 
@@ -185,6 +203,7 @@ class MainApp(QMainWindow):
             self.npyfile = npyfile
             path = os.path.dirname(filename)
             np.save("lastpath.npy", path)
+
 
             
     def createMenu(self):
@@ -364,7 +383,7 @@ class MainApp(QMainWindow):
         # self.tableWidget.doubleClicked.connect(self.on_click)
 
         self.setGeometry(0, 0, 800, 600)
-        self.setWindowTitle('NPYViewer v.1.25')
+        self.setWindowTitle("NPYViewer v."+version)
 
         self.widget = QWidget(self)
         layout = QGridLayout()
@@ -381,11 +400,17 @@ class MainApp(QMainWindow):
 
 
 def main():
-    app = QApplication(sys.argv)
-    ex = MainApp()
-    if len(sys.argv) ==2:
-        ex.openNPY_CLI(sys.argv[1])
-    sys.exit(app.exec_())
+    if "-noGUI" not in sys.argv:
+        app = QApplication(sys.argv)
+        ex = MainApp()
+        if len(sys.argv) ==2:
+            ex.openNPY_CLI(sys.argv[1])
+        sys.exit(app.exec_())
+    if len(sys.argv) ==3:
+        if sys.argv[2]=="-noGUI":
+            print("GUI not displayed")
+            openNPY_CLI_noGUI(sys.argv[1])
+
 
 
 if __name__ == '__main__':
