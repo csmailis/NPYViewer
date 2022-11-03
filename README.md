@@ -34,7 +34,7 @@
 * Plot 2D numpy arrays containing 3D coordinates as 3D point clouds
 * Visualize heightmaps stored as 2D numpy arrays
 * Visualize timeseries data stored as 1D numpy arrays
-* Supports loading .npy files as command line arguments (e.g., python3 NPYViewer.py sample.npy)
+* Supports loading .npy files as command line arguments (e.g., python3 NPYViewer.py sample_npy_files/timeseries.npy)
 * Print numpy arrays in terminal through the use of the -noGUI argument (e.g., python NPYViewer.py sample_npy_files/timeseries.npy -noGUI)
 * GUI developed using PyQT5
 
