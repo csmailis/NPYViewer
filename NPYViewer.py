@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os.path
 import sys
 from PyQt5.QtWidgets import *
