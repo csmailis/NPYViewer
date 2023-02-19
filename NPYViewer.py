@@ -301,20 +301,22 @@ class MainApp(QMainWindow):
         OutMatrix = np.array(OutMatrix)
 
 
-        
         G = nx.DiGraph(OutMatrix)
-
 
         # Set the position of the nodes in the graph
         pos = nx.spring_layout(G)
 
         # Draw the graph with labels and edges
         labels = {node: str(int(node)+1) for node in G.nodes()}
-        nx.draw_networkx_labels(G, pos, labels=labels)
+
+        nx.draw_networkx_labels(G, pos,labels=labels)
         nx.draw_networkx_edges(G, pos)
+
+        nx.draw_networkx_edge_labels(G, pos, edge_labels={(i, j): OutMatrix[i][j] for i, j in G.edges()})
 
         # Draw the nodes with the same color
         nx.draw_networkx_nodes(G, pos, node_color='b')
+
 
         # Set the title and show the plot
         plt.title("Directional Graph")
