@@ -1,5 +1,5 @@
 
-# NPYViewer 1.26
+# NPYViewer 1.27
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D and 1D NumPy arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
@@ -11,6 +11,8 @@
 ![screenshot](screenshots/ScreenShot4.png)
 #### Visualize timeseries data stored as 1D numpy arrays
 ![screenshot](screenshots/ScreenShot5.png)
+#### Visualize adjacency matrices as graphs
+![screenshot](screenshots/ScreenShot7.png)
 #### Print numpy arrays in terminal
 ![screenshot](screenshots/ScreenShot6.png)
 
@@ -35,6 +37,7 @@
 * Visualize heightmaps stored as 2D numpy arrays
 * Visualize timeseries data stored as 1D numpy arrays
 * Supports loading .npy files as command line arguments (e.g., python3 NPYViewer.py sample_npy_files/timeseries.npy)
+* Visualize adjacency matrices as graphs
 * Print numpy arrays in terminal through the use of the -noGUI argument (e.g., python NPYViewer.py sample_npy_files/timeseries.npy -noGUI)
 * GUI developed using PyQT5
 
@@ -45,7 +48,7 @@
 * Data search and filtering
 * Modify content datatypes 
 * Handle data with more than 2 dimensions
-* Visualize adjacency matrices as graphs
+
 
 
 ### Changes since last version:
