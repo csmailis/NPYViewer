@@ -14,9 +14,10 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import os
 from scipy.io import savemat
+import networkx as nx
 
 
-version="1.26"
+version="1.27"
 
 def isint(s):
     try:
@@ -249,6 +250,12 @@ class MainApp(QMainWindow):
         ViewTimeSeriesAct.setStatusTip('View as TimeSeries')
         ViewTimeSeriesAct.triggered.connect(self.ViewTimeseries)
         self.statusBar()
+
+        ViewGraphSeriesAct= QAction(QIcon(None), 'View as Directional &Graph', self)
+        ViewGraphSeriesAct.setShortcut('Ctrl+G')
+        ViewGraphSeriesAct.setStatusTip('View as Graph')
+        ViewGraphSeriesAct.triggered.connect(self.ViewGraphSeriesAct)
+        self.statusBar()
         
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&Functionalities')
@@ -257,7 +264,7 @@ class MainApp(QMainWindow):
         fileMenu.addAction(grayscalevVewAct)
         fileMenu.addAction(View3dAct)
         fileMenu.addAction(View3dImgAct)
-        fileMenu.addAction(ViewTimeSeriesAct)
+        fileMenu.addAction(ViewGraphSeriesAct)
         fileMenu.addAction(exitAct)
 
     def grayscaleView(self):
@@ -277,6 +284,41 @@ class MainApp(QMainWindow):
         plt.imshow(OutMatrix, cmap='gray')
         plt.show()
         return
+
+    def ViewGraphSeriesAct(self):
+        OutMatrix = []
+        for row in range(self.tableWidget.rowCount()):
+            rowdata = []
+            for column in range(self.tableWidget.columnCount()):
+                item = self.tableWidget.item(row, column)
+                # print(item.text())
+                if item is not None:
+                    rowdata.append(np.float32(item.text()))
+
+            if len(rowdata) > 0 and rowdata != None:
+                OutMatrix.append(rowdata)
+
+        OutMatrix = np.array(OutMatrix)
+
+
+        
+        G = nx.DiGraph(OutMatrix)
+
+
+        # Set the position of the nodes in the graph
+        pos = nx.spring_layout(G)
+
+        # Draw the graph with labels and edges
+        labels = {node: str(int(node)+1) for node in G.nodes()}
+        nx.draw_networkx_labels(G, pos, labels=labels)
+        nx.draw_networkx_edges(G, pos)
+
+        # Draw the nodes with the same color
+        nx.draw_networkx_nodes(G, pos, node_color='b')
+
+        # Set the title and show the plot
+        plt.title("Directional Graph")
+        plt.show()
 
     def ViewImageHeightMap(self):
         OutMatrix = []
