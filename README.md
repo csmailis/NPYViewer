@@ -54,4 +54,4 @@
 ### Changes since last version:
 * Added support for visualizing adjacency matrices (saved in .npy arrays) as directional edge weighted graphs
 * Added an adjacency matrix example .npy file under the "sample_npy_files" directory
-* Updated requirements.txt file with new libaries needed for installation
+* Updated requirements.txt file with new libraries needed for installation
