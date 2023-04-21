@@ -1,6 +1,9 @@
 
+<p align="center">
+  <img src="npyviewer_128x128.png" alt="screenshot">
+</p>
+
 # NPYViewer 1.28
-![screenshot](npyviewer_128x128.png) 
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D and 1D NumPy arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
