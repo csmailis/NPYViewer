@@ -245,7 +245,7 @@ class MainApp(QMainWindow):
         View3dImgAct.triggered.connect(self.ViewImageHeightMap)
         self.statusBar()
 
-        ViewTimeSeriesAct= QAction(QIcon(None), 'View as &TimeSeries', self)
+        ViewTimeSeriesAct= QAction(QIcon(None), 'View as &Time Series', self)
         ViewTimeSeriesAct.setShortcut('Ctrl+S')
         ViewTimeSeriesAct.setStatusTip('View as TimeSeries')
         ViewTimeSeriesAct.triggered.connect(self.ViewTimeseries)
