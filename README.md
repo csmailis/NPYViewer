@@ -57,4 +57,4 @@
 
 ### Changes since last version:
 * Added application icon
-* Fixed Bug: "View as Timeseries" option was hidden in the "Functionalities" menu
+* Fixed Bug: "View as Time Series" option was hidden in the "Functionalities" menu
