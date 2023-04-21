@@ -441,7 +441,7 @@ class MainApp(QMainWindow):
         self.layout = QVBoxLayout()
 
         self.setLayout(self.layout)
-        self.setWindowIcon(QIcon('npyviewer.png'))
+        self.setWindowIcon(QIcon('npyviewer_128x128.png'))
         self.show()
 
 
