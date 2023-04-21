@@ -17,7 +17,7 @@ from scipy.io import savemat
 import networkx as nx
 
 
-version="1.27"
+version="1.28"
 
 def isint(s):
     try:
@@ -442,7 +442,7 @@ class MainApp(QMainWindow):
         self.layout = QVBoxLayout()
 
         self.setLayout(self.layout)
-        self.setWindowIcon(QIcon('npyviewer.png'))
+        self.setWindowIcon(QIcon('npyviewer_128x128.png'))
 
         self.show()
 
