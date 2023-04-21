@@ -1,5 +1,5 @@
 
-# NPYViewer 1.27
+# NPYViewer 1.28
 ###  A simple GUI tool that provides multiple ways to load and view the contents of .npy files containing 2D and 1D NumPy arrays.
 
 #### Plot 3-column 2D numpy arrays containing 3D coordinates as 3D point clouds
@@ -52,6 +52,4 @@
 
 
 ### Changes since last version:
-* Added support for visualizing adjacency matrices (saved in .npy arrays) as directional edge weighted graphs
-* Added an adjacency matrix example .npy file under the "sample_npy_files" directory
-* Updated requirements.txt file with new dependencies needed for installation
+* Added application icon
