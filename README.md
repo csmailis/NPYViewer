@@ -13,7 +13,7 @@
 #### Visualize heightmaps stored as 2D numpy arrays
 ![screenshot](screenshots/ScreenShot3.png) 
 ![screenshot](screenshots/ScreenShot4.png)
-#### Visualize timeseries data stored as 1D numpy arrays
+#### Visualize time series data stored as 1D numpy arrays
 ![screenshot](screenshots/ScreenShot5.png)
 #### Visualize adjacency matrices (saved in .npy arrays) as directional edge weighted graphs
 ![screenshot](screenshots/ScreenShot7.png)
@@ -39,7 +39,7 @@
 * Plot 2D numpy arrays as grayscale images
 * Plot 2D numpy arrays containing 3D coordinates as 3D point clouds
 * Visualize heightmaps stored as 2D numpy arrays
-* Visualize timeseries data stored as 1D numpy arrays
+* Visualize time series data stored as 1D numpy arrays
 * Supports loading .npy files as command line arguments (e.g., python3 NPYViewer.py sample_npy_files/timeseries.npy)
 * Visualize adjacency matrices (saved in .npy arrays) as directional edge weighted graphs
 * Print numpy arrays in terminal through the use of the -noGUI argument (e.g., python NPYViewer.py sample_npy_files/timeseries.npy -noGUI)
