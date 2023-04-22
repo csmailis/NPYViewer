@@ -63,14 +63,3 @@
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
-## Disclaimer of Liability
-
-The authors of this code are not responsible for any damages or liabilities resulting from the use of this code.
-
-## Attribution
-
-This code includes third-party libraries and code, which are attributed in the [LICENSE](LICENSE.md) file.
-
-## Warranty
-
-This code is provided "as is" without any warranties or guarantees
